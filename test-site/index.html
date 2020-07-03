@@ -4,27 +4,29 @@
         <meta charset="utf-8">
         <title>My test page</title>
         <link href="styles/style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     </head>
     <body>
         <!-- heading -->
         <h2>The is the Firefox logo.</h2>
-        
+
         <!-- empty element, no closing tag -->
         <img src="images/firefox-icon.png" alt="Firefox logo">
-        
+
         <!-- nested elements -->
         <p>My cat is <strong>very</strong> grumpy.</p>
-        
+
         <!-- list -->
         <p>At Mozilla, we're a global community of</p>
         <ul>
-            <li>technologies</li>
-            <li>thinkers</li>
-            <li>builders</li>
+            <li class="item">technologies</li>
+            <li class="item">thinkers</li>
+            <li class="item">builders</li>
         </ul>
         <p>working together...</p>
 
-        <a href="https://www.mozilla.org/en-US/about/manifesto/">Mozilla Manifesto</a>
-
+        <a id="mozilla" href="https://www.mozilla.org/en-US/about/manifesto/">Mozilla Manifesto</a>
+        
+        <script src="scripts/main.js"></script>
     </body>
 </html>
