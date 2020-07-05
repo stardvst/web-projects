@@ -1,41 +1,105 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="author" content="Lilia">
-        <meta name="description" content="Test website">
-        <title>My test page</title>
-        <link href="styles/style.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <!-- heading -->
-        <h2>The is the Firefox logo.</h2>
+<html lang="en-US">
 
-        <!-- empty element, no closing tag -->
-        <img src="images/firefox-icon.png" alt="Firefox logo">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Lilia">
+	<meta name="description" content="Test website">
+	<title>My test page</title>
+	<link href="styles/style.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
 
-        <!-- nested elements -->
-        <p>My cat is <strong>very</strong> grumpy.</p>
+<body>
+	<header>
+		<!-- heading -->
+		<h2>The is the Firefox logo.</h2>
+	</header>
 
-        <!-- list -->
-        <p>At Mozilla, we're a global community of</p>
-        <ul>
-            <li class="item">technologies</li>
-            <li class="item">thinkers</li>
-            <li class="item">builders</li>
-        </ul>
-        <p>working together...</p>
+	<a href="https://www.mozilla.org/en-US/" target="_blank" title="Mozilla Website">
+		<!-- empty element, no closing tag -->
+		<img src="images/firefox-icon.png" alt="Firefox logo">
+	</a>
 
-        <p>Read the <a id="mozilla" href="https://www.mozilla.org/en-US/about/manifesto/" title="The Mozilla Manifesto" target="_blank">Mozilla Manifesto</a></p>
+	<nav>
+		<ul>
+			<li>Home</li>
+			<li><a href="pictures.html">Pictures</a></li>
+			<li><a href="projects.html">Projects</a></li>
+			<li><a href="social.html">Social</a></li>
+		</ul>
+	</nav>
 
-        <button>Change user</button>
-        <input type="text" disabled>
+	<main>
+		<!-- nested elements -->
+		<p>My cat is <strong>very</strong> grumpy.</p>
 
-        <!-- entity reference -->
-        <!-- <p>Paragraphs are defined using the <p> element.</p> -->
-        <p>Paragraphs are defined using the &apos;&lt;p&gt;&apos; element.</p>
+		<!-- list -->
+		<p>At Mozilla, we're a global community of</p>
+		<ul>
+			<li class="item">technologies, such as
+				<ul>
+					<li><abbr title="Hypertext Markup Language">HTML</abbr>,</li>
+					<li>CSS,</li>
+					<li>JS</li>
+				</ul>
+			</li>
+			<li class="item">thinkers</li>
+			<li class="item">builders</li>
+		</ul>
+		<p>working together...</p>
 
-        <script src="scripts/main.js"></script>
-    </body>
+		<p>Read the <a id="mozilla" href="https://www.mozilla.org/en-US/about/manifesto/" title="The Mozilla Manifesto"
+				target="_blank">Mozilla Manifesto</a></p>
+
+		<button>Change user</button>
+		<input type="text" disabled>
+
+		<!-- entity reference -->
+		<!-- <p>Paragraphs are defined using the <p> element.</p> -->
+		<p>Paragraphs are defined using the &apos;&lt;p&gt;&apos; element.</p>
+
+		<p>The menu was a sea of exotic words linke <i lang="uk-latn">vatrushka</i>, etc.</p>
+
+<hr>
+
+		<p><em>Description lists</em></p>
+		<dl>
+			<dt>Term 1</dt>
+			<dd>Explanation 1</dd>
+			<dt>Term 2</dt>
+			<dd>Explanation 2</dd>
+			<dt>Term 10</dt>
+			<dd>Explanation 10</dd>
+			<dd>Explanation 11</dd>
+		</dl>
+
+		<p><em>Quotations: block and inline</em></p>
+		<blockquote cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
+			<p>The <strong>HTML <code>&lt;blockquote&gt;</code> Element</strong>
+				(or <em>HTML Block Quotation Element</em>) indicates that the enclosed
+				text is an extended quotation.
+			</p>
+		</blockquote>
+
+		<p>The quote element — <code>&lt;q&gt;</code> — is
+			<q cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">intended
+				for short quotations that don't require paragraph breaks.
+			</q> --
+			<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">
+				<cite>MDN q page</cite>
+			</a>
+		</p>
+
+		<time datetime="2020-07-05">Current date: Jul 5, 2020</time>
+	</main>
+
+	<footer>
+		<p>Copyright.</p>
+	</footer>
+
+	<script src="scripts/main.js"></script>
+</body>
+
 </html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Lilia">
+	<meta name="description" content="Test website">
+	<title>My test page</title>
+	<link href="styles/style.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+	<!-- heading -->
+	<h2>The is the Firefox logo.</h2>
+
+	<a href="https://www.mozilla.org/en-US/" target="_blank" title="Mozilla Website">
+		<!-- empty element, no closing tag -->
+		<img src="images/firefox-icon.png" alt="Firefox logo">
+	</a>
+
+	<p>Website navigation</p>
+	<ul>
+		<li><a href="index.html">Home</a></li>
+		<li>Pictures</li>
+		<li><a href="projects.html">Projects</a></li>
+		<li><a href="social.html">Social</a></li>
+	</ul>
+
+	<!-- nested elements -->
+	<p>My cat is <strong>very</strong> grumpy.</p>
+
+	<!-- list -->
+	<p>At Mozilla, we're a global community of</p>
+	<ul>
+		<li class="item">technologies, such as
+			<ul>
+				<li>HTML,</li>
+				<li>CSS,</li>
+				<li>JS</li>
+			</ul>
+		</li>
+		<li class="item">thinkers</li>
+		<li class="item">builders</li>
+	</ul>
+	<p>working together...</p>
+
+	<p>Read the <a id="mozilla" href="https://www.mozilla.org/en-US/about/manifesto/" title="The Mozilla Manifesto"
+			target="_blank">Mozilla Manifesto</a></p>
+
+	<button>Change user</button>
+	<input type="text" disabled>
+
+	<!-- entity reference -->
+	<!-- <p>Paragraphs are defined using the <p> element.</p> -->
+	<p>Paragraphs are defined using the &apos;&lt;p&gt;&apos; element.</p>
+
+	<p>The menu was a sea of exotic words linke <i lang="uk-latn">vatrushka</i>, etc.</p>
+
+	<script src="scripts/main.js"></script>
+</body>
+
+</html>
