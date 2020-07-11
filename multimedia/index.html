@@ -38,14 +38,24 @@
     </video>
 
     <p>Multi-source videos</p>
-    <video controls>
+    <video controls loop muted poster="images/poster.png" width="400" height="400">
         <source src="videos/rabbit320.webm" type="video/webm">
         <source src="videos/rabbit320.mp4" type="video/mp4">
         <p>
-            Your browser doesn't support HTML5 audio. Here is a <a href="audio/viper.mp3">link to the audio</a> instead.
+            Your browser doesn't support HTML5 video. Here is a <a href="audio/viper.mp3">link to the audio</a> instead.
         </p>
     </video>
 
+    <h3>Audio</h3>
+    <audio controls>
+        <source src="audio/viper.mp3" type="audio/mp3">
+        <source src="audio/viper.ogg" type="audio/ogg">
+        <p>
+            Your browser doesn't support HTML5 audio. Here is a <a href="audio/viper.mp3">link to the audio</a> instead.
+        </p>
+    </audio>
+
+    <script src="scripts/script.js"></script>
 </body>
 
 </html>
