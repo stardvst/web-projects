@@ -71,7 +71,8 @@
     <iframe src="https://developer.mozilla.org/en-US/docs/Glossary" width="100%" height="500" frameborder="0"
         allowfullscreen sandbox>
         <p>
-            <a href="https://developer.mozilla.org/en-US/docs/Glossary"> Fallback link for browsers that don't support iframes
+            <a href="https://developer.mozilla.org/en-US/docs/Glossary"> Fallback link for browsers that don't support
+                iframes
             </a>
         </p>
     </iframe>
@@ -92,6 +93,29 @@
     <iframe src="images/star.svg" width="500" height="500" sandbox>
         <img src="images/star.png" alt="A fallback star">
     </iframe>
+
+    <h2>Responsive images</h2>
+    <h3>Multiple sizes</h3>
+    <img srcset="images/star-wars-320w.jpg 320w,
+            images/star-wars-480w.jpg 480w,
+            images/star-wars-800w.jpg 800w"
+        sizes="(max-width: 320px) 280px,
+            (max-width: 480px) 440px,
+            800px"
+        src="images/star-wars-800w.jpg" alt="Star Wars">
+
+    <h3>Same size, different resolutions, always 320px</h3>
+    <img srcset="images/star-wars-320w,
+            images/star-wars-480w.jpg 1.5x,
+            images/star-wars-640w.jpg 2x"
+        src="images/star-wars-640w.jpg" alt="Star Wars" style="width: 320px;">
+
+    <h3>Art direction</h3>
+    <picture>
+        <source media="(max-width: 799px)" srcset="images/star.png">
+        <source media="(min-width: 800px)" srcset="images/star-wars-800w.jpg">
+        <img src="images/star-wars-800w.jpg" alt="Star...">
+    </picture>
 
     <script src="scripts/script.js"></script>
 </body>
