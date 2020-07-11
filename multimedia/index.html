@@ -76,6 +76,23 @@
         </p>
     </iframe>
 
+    <h2>PNG vs SVG</h2>
+    <img src="images/star.png" alt="A raster star">
+    <img src="images/star.svg" alt="A vector star">
+
+    <p>X-browser support</p>
+    <img src="images/star.png" alt="A star" srcset="images/star.svg">
+
+    <p>Inline SVG</p>
+    <svg>
+        <rect width="100%" height="100%" fill="green" />
+    </svg>
+
+    <p><code>&lt;iframe&gt;</code> svg</p>
+    <iframe src="images/star.svg" width="500" height="500" sandbox>
+        <img src="images/star.png" alt="A fallback star">
+    </iframe>
+
     <script src="scripts/script.js"></script>
 </body>
 
