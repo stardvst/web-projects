@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Text field examples</title>
+</head>
+
+<body>
+    <form>
+        <p>
+            <label for="comment">Add a comment here:</label>
+            <input type="text" id="comment" name="comment" value="I'm a text field">
+        </p>
+        <p>
+            <label for="email">Enter your email address:</label>
+            <input type="email" id="email" name="email" multiple pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+        </p>
+        <p>
+            <label for="pwd">Enter your password:</label>
+            <input type="password" id="pwd" name="pwd">
+        </p>
+        <p>
+            <label for="search">Search:</label>
+            <input type="search" id="search" name="search">
+        </p>
+        <p>
+            <label for="tel">Enter your number:</label>
+            <input type="tel" id="tel" name="tel">
+        </p>
+        <p>
+            <label for="url">Web address:</label>
+            <input type="url" id="url" name="url">
+        </p>
+
+        <p>
+            <label for="comment">Add a comment here:</label>
+            <textarea cols="30" rows="10" wrap="soft">This is my default content.
+            </textarea>
+        </p>
+        <p>
+            <button type="submit">Submit me!</button>
+        </p>
+
+        <p>
+            <button type="submit">Submit me!</button>
+        </p>
+    </form>
+</body>
+
+</html>
