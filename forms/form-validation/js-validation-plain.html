@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS validation</title>
+
+    <style>
+        body {
+            font: 1em sans-serif;
+            width: 200px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        p * {
+            display: block;
+        }
+
+        input[type=email] {
+            -webkit-appearance: none;
+            appearance: none;
+
+            width: 100%;
+            border: 1px solid #333;
+            margin: 0;
+
+            font-family: inherit;
+            font-size: 90%;
+
+            box-sizing: border-box;
+        }
+
+        /* This is our style for the invalid fields */
+        input.invalid {
+            border-color: #900;
+            background-color: #FDD;
+        }
+
+        input:focus.invalid {
+            outline: none;
+        }
+
+        /* This is the style of our error messages */
+        .error {
+            width: 100%;
+            padding: 0;
+
+            font-size: 80%;
+            color: white;
+            background-color: #900;
+            border-radius: 0 0 5px 5px;
+
+            box-sizing: border-box;
+        }
+
+        .error.active {
+            padding: 0.3em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form novalidate>
+        <p>
+            <label for="mail">
+                <span>Please enter an email address:</span>
+                <input type="email" id="mail" name="email">
+                <span class="error" aria-live="polite"></span>
+            </label>
+        </p>
+        <button>Submit</button>
+    </form>
+
+    <script>
+        var form = document.getElementsByTagName('form')[0];
+        var email = document.getElementById('mail');
+
+        var error = email;
+        while ((error = error.nextSibling).nodeType != 1);
+
+        var emailRegExp = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+
+        function addEvent(element, event, callback) {
+            var prevCallback = element['on' + event];
+            element['on' + event] = function (e) {
+                var output = callback(e);
+                if (output === false) return false;
+
+                if (typeof prevCallback === 'function') {
+                    output = prevCallback(e);
+                    if (output === false) return false;
+                }
+            }
+        };
+
+        addEvent(window, 'load', function () {
+            var test = email.value.length === 0 || emailRegExp.test(email.value);
+            email.className = test ? 'valid' : 'invalid';
+        });
+
+        addEvent(email, 'input', function () {
+            var test = email.value.length === 0 || emailRegExp.test(email.value);
+            if (test) {
+                email.className = 'valid';
+                error.innerHTML = '';
+                error.className = 'error';
+            } else {
+                email.className = 'invalid';
+            }
+        });
+
+        addEvent(form, 'submit', function () {
+            var test = email.value.length === 0 || emailRegExp.test(email.value);
+            if (!test) {
+                email.className = 'invalid';
+                error.innerHTML = 'I expect an e-mail, darling!';
+                error.className = 'error active';
+                return false;
+            } else {
+                email.className = 'valid';
+                error.innerHTML = '';
+                error.className = 'error';
+            }
+        });
+    </script>
+</body>
+
+</html>
