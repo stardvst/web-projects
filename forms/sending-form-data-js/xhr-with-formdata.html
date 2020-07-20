@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button>Click me!</button>
+
+    <script>
+        function sendData(data) {
+            console.log('Sending data');
+
+            const XHR = new XMLHttpRequest(),
+                FD = new FormData();
+            let urlEncodedData = "",
+                urlEncodedDataPairs = [],
+                name;
+
+            for (name in data) {
+                FD.append(name, data[name]);
+            }
+
+            urlEncodedData = urlEncodedDataPairs.join('&').replace('/%20/g', '+');
+
+            XHR.addEventListener('load', function (event) {
+                alert('Yeah! Data sent and response loaded.');
+            });
+
+            XHR.addEventListener('error', function (event) {
+                alert('Oops! Something went wrong.');
+            });
+
+            XHR.open('POST', 'https://example.com/cors.php');
+            XHR.send(urlEncodedData);
+        }
+
+        const btn = document.querySelector('button');
+        btn.addEventListener('click', function () {
+            sendData({ test: 'ok' });
+        })
+    </script>
+</body>
+
+</html>
