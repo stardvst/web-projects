@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* check box */
+        span {
+            display: inline-block;
+            background: red;
+        }
+
+        span>input[type=checkbox] {
+            width: 100px;
+            height: 100px;
+        }
+
+        /* form elements */
+        form input[type=checkbox] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+
+            position: relative;
+            width: 1em;
+            height: 1em;
+            border: 1px solid gray;
+            vertical-align: -4px;
+            color: green;
+        }
+
+        form input[type=checkbox]::before {
+            content: "✔";
+            position: absolute;
+            font-size: 1.2em;
+            right: 0;
+            top: -0.3em;
+            visibility: hidden;
+        }
+
+        form input[type=checkbox]:checked::before {
+            visibility: visible;
+        }
+
+        form input[type=checkbox]:disabled {
+            border-color: black;
+            background: #ddd;
+            color: gray;
+        }
+
+        /* select */
+        select,
+        option {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        select::-ms-expand {
+            display: none;
+        }
+
+        select {
+            width: 80px;
+            padding: 10px;
+        }
+
+        option {
+            padding: 5px;
+            color: #cc0000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <span>
+        <input type="checkbox">
+    </span>
+
+    <form>
+        <fieldset>
+            <legend>Fruit preferences</legend>
+
+            <p>
+                <label for="cherry">
+                    <input type="checkbox" id="cherry" name="fruit-1" value="cherry">
+                    I like cherry
+                </label>
+            </p>
+
+            <p>
+                <label for="banana">
+                    <input type="checkbox" id="banana" name="fruit-2" value="banana" disabled>
+                    I can't like banana
+                </label>
+            </p>
+
+            <p>
+                <label for="strawberry">
+                    <input type="checkbox" id="strawberry" name="fruit-1" value="strawberry">
+                    I like strawberry
+                </label>
+            </p>
+        </fieldset>
+    </form>
+
+    <div>
+        <select>
+            <option>Cherry</option>
+            <option>Banana</option>
+            <option>Strawberry</option>
+        </select>
+    </div>
+</body>
+
+</html>
