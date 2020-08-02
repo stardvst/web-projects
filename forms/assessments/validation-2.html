@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Form validation: Task 2</title>
+    <style>
+        body {
+            background-color: #fff;
+            color: #333;
+            font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
+            padding: 1em;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        input:invalid {
+            border: 1px solid red;
+        }
+
+        input:valid {
+            border: 1px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <h2>Enter your support query</h2>
+        <ul>
+            <li>
+                <label for="uname">User name:</label>
+                <input type="text" name="uname" id="uname" minlength="5" maxlength="20" pattern="[a-z]\.[a-z1-9]{3,}"
+                    required>
+            </li>
+            <li>
+                <label for="email">Email address:</label>
+                <input type="email" name="email" id="email" pattern="[a-zA-Z]+@bigcorp.eu" required>
+            </li>
+            <li>
+                <label for="phone">Phone number:</label>
+                <input type="text" pattern="\d{10}|\d{3}[ -\.]\d{3}[ -\.]\d{4}" name="phone" id="phone" required>
+            </li>
+            <li>
+                <label for="comment">Comment:</label>
+                <textarea name="comment" id="comment" maxlength="200" required>
+          </textarea>
+            </li>
+            <li>
+                <button>Submit comment</button>
+            </li>
+        </ul>
+    </form>
+</body>
+
+</html>
