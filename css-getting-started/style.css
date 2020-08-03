@@ -1,0 +1,51 @@
+h1 {
+    color: red;
+}
+
+p, li {
+    color: green;
+}
+
+li {
+    list-style-type: none;
+}
+
+/* class */
+.special {
+    color: orange;
+    font-weight: bold;
+}
+
+/* descendant combinator */
+li em {
+    color: rebeccapurple;
+}
+
+/* adjacent sibling combinator */
+h1 + p {
+    font-size: 200%;
+}
+
+/* based on state */
+a:link {
+    color: pink;
+}
+
+a:visited {
+    color: green;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* combining selectors and combinators */
+p + ul + p {
+    color: blue;
+}
+
+body h1 + p .special {
+    color: yellow;
+    background-color: black;
+    padding: 5px;
+}
