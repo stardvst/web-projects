@@ -28,36 +28,23 @@
 </head>
 
 <body>
-    <form novalidate>
+    <form>
         <label for="mail">I would like you to provide me with an e-mail address:</label>
         <input type="email" id="mail" name="mail" minlength="10" required>
         <button>Submit</button>
-        <div class="error-msg"></div>
     </form>
 
     <script>
-        var form = document.getElementsByTagName('form')[0];
         const email = document.getElementById("mail");
-        const error_msg = document.querySelector(".error-msg");
-
-        function isValidEmail(email) {
-            return email.value.match(/[a-zA-Z\d]+@[a-zA-Z\d]+\.[a-zA-Z\d]+/gi) &&
-                email.validity.valid;
-        }
-
         email.addEventListener('input', function (event) {
-            if (isValidEmail(email)) {
-                error_msg.innerHTML = '';
+            if (email.validity.typeMismatch) {
+                email.setCustomValidity('Invalid e-mail address.');
+            } else if (email.validity.tooShort) {
+                email.setCustomValidity('E-mail address is too short.');
+            } else {
+                email.setCustomValidity('');
             }
-        }, false);
-
-        form.addEventListener('submit', function (event) {
-            if (!isValidEmail(email)) {
-                error_msg.innerHTML = 'Please enter valid e-mail';
-                event.preventDefault();
-            }
-        }, false);
-
+        });
     </script>
 </body>
 
