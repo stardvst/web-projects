@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* specificity */
+        .special-p {
+            color: blue;
+        }
+
+        p {
+            color: red;
+        }
+
+        /* cascade */
+        span {
+            color: blue;
+        }
+
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p class="special-p">What color am I?</p>
+
+    <span class="special-span">What color am I?</span>
+
+</body>
+
+</html>
