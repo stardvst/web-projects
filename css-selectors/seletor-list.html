@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        h1, .special {
+            color: pink;
+        }
+
+        h1 {
+            background-color: green;
+        }
+
+        /* ignored
+        ..special {
+            background-color: green;
+        }
+        */
+
+        /* ignored for both
+        h1, ..special {
+            border: 1px solid red;
+        }
+        */
+    </style>
+</head>
+
+<body>
+
+    <h1>Heading</h1>
+    <p class="special">Paragraph</p>
+
+</body>
+
+</html>
