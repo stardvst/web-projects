@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* appliea to direct + indirect children */
+        .main {
+            color: tomato;
+            border: 2px solid #ccc;
+            padding: 1em;
+        }
+
+        /* applies down through children */
+        .special {
+            color: aquamarine;
+            font-weight: bold;
+        }
+
+        /* universal values */
+        body {
+            color: green;
+        }
+
+        .inherited a {
+            color: inherit;
+        }
+
+        .reset a {
+            color: initial;
+        }
+
+        .unset a {
+            color: unset;
+        }
+
+        /* reset all values */
+        blockquote {
+            background-color: red;
+            border: 2px solid green;
+        }
+
+        .fix-this {
+            all: unset;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul class="main">
+        <li>Item One</li>
+        <li>Item Two
+            <ul>
+                <li>2.1</li>
+                <li>2.2</li>
+            </ul>
+        </li>
+        <li class="first">Item Three
+            <ul class="special">
+                <li>3.1
+                    <ul>
+                        <li class="square">3.1.1</li>
+                        <li class="square">3.1.2</li>
+                    </ul>
+                </li>
+                <li>3.2</li>
+            </ul>
+        </li>
+    </ul>
+
+    <ul>
+        <li>Default <a href="#">link</a> color</li>
+        <li class="inherited">Inherit the <a href="#">link</a> color</li>
+        <li class="reset">Reset the <a href="#">link</a> color</li>
+        <li class="unset">Unset the <a href="#">link</a> color</li>
+    </ul>
+
+    <blockquote>
+        <p>This blockquote is styled</p>
+    </blockquote>
+
+    <blockquote class="fix-this">
+        <p>This blockquote is not styled</p>
+    </blockquote>
+
+</body>
+
+</html>
