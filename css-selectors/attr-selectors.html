@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        p[class~="big"] {
+            font-size: 20px;
+        }
+
+        p[class~="bold"] {
+            font-weight: bold;
+        }
+
+        p[class~="purple"] {
+            color: purple;
+        }
+
+        p[class|="bg"] {
+            background-color: pink;
+        }
+
+        p[class^="bg-"] {
+            width: 50%;
+        }
+
+        p[class$="-green"] {
+            color: green;
+        }
+
+        a[target] {
+            color: red;
+        }
+
+        a[href="www.example.com"] {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p class="big bold purple">This is a big bold purple paragraph.</p>
+    <p class="purple">This is a purple paragraph.</p>
+    <p class="bold purple">This is a bold purple paragraph.</p>
+    <p class="big bold ">This is a big bold paragraph.</p>
+    <p class="bg-green">This is a green paragraph with background.</p>
+    <p class="bg-color">This is a paragraph with background.</p>
+    <p class="font-green">This is a green paragraph.</p>
+
+    <ul>
+        <li><a href="#" target="_blank">Red link</a></li>
+        <li><a href="www.example.com">Blue link</a></li>
+        <li><a href="#">Green link</a></li>
+        <li><a href="#">Default link</a></li>
+    </ul>
+
+</body>
+
+</html>
