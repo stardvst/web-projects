@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .wrapper {
+            display: flex;
+        }
+
+        .box {
+            border: 1px solid black;
+            margin: 5px;
+            /* width: 90px; */
+            inline-size: 100px;
+            border-inline-start-color: red;
+            padding-inline-start: 20px;
+        }
+
+        .horizontal {
+            writing-mode: horizontal-tb;
+        }
+
+        .vertical {
+            writing-mode: vertical-rl;
+        }
+
+        img {
+            /* float: inline-start; */
+            float: left;
+            margin-inline-end: 10px;
+            margin-block-end: 3px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="box horizontal">
+            <h2>Heading.</h2>
+            <img src="star.png" alt="star">
+            <p>A very very very long paragraph.</p>
+            <p>A very very very long paragraph.</p>
+        </div>
+        <div class="box vertical">
+            <h2>Heading.</h2>
+            <img src="star.png" alt="star">
+            <p>A very very very long paragraph.</p>
+            <p>A very very very long paragraph.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
