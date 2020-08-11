@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* overflow in block dimension */
+        .box1 {
+            border: 1px solid blue;
+            width: 200px;
+            height: 100px;
+        }
+
+        /* overflow in inline dimension */
+        .word {
+            border: 1px solid blue;
+            width: 100px;
+            font-size: 250%;
+        }
+
+        .box2 {
+            border: 1px solid blue;
+            width: 200px;
+            height: 100px;
+            overflow: hidden;
+        }
+
+        .box3 {
+            border: 1px solid blue;
+            width: 200px;
+            height: 100px;
+            overflow: scroll;
+        }
+
+        .word2 {
+            border: 1px solid blue;
+            width: 100px;
+            font-size: 250%;
+            overflow-x: scroll;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box1">This box has a height and a width. This means that if there is too much content to be displayed
+        within
+        the assigned height, there will be an overflow situation. If overflow is set to hidden then any overflow will
+        not be
+        visible.</div>
+
+    <p>This content is outside of the box.</p>
+
+    <div class="word1">Overflow</div>
+
+    <h2>Hidden overflow</h2>
+    <div class="box2">This box has a height and a width. This means that if there is too much content to be displayed
+        within
+        the assigned height, there will be an overflow situation. If overflow is set to hidden then any overflow will
+        not be
+        visible.</div>
+
+    <h2>Scrolling overflow</h2>
+    <div class="box3">This box has a height and a width. This means that if there is too much content to be displayed
+        within
+        the assigned height, there will be an overflow situation. If overflow is set to hidden then any overflow will
+        not be
+        visible.</div>
+
+    <h2>Scrolling overflow-x</h2>
+    <div class="word2">Overflow</div>
+
+</body>
+
+</html>
