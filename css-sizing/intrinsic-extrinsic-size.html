@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        img {
+            border: 5px solid darkblue;
+        }
+
+        .box-intrinsic {
+            border: 5px solid red;
+        }
+
+        .wrapper {
+            font-size: 20px;
+        }
+
+        .box-extrinsic {
+            border: 5px solid yellowgreen;
+            height: 150px;
+            width: 200px;
+            margin-bottom: ;
+        }
+
+        .parent {
+            margin-top: 50px;
+            border: 2px solid green;
+            width: 400px;
+        }
+
+        .child {
+            width: 50%;
+            border: 2px solid blue;
+            margin: 10px;
+        }
+
+        .margin-wrapper {
+            margin-top: 50px;
+            border: 2px solid gold;
+            width: 600px;
+        }
+
+        .margin-wrapper>.box {
+            /* same as margin: 60px; */
+            margin: 10%;
+            padding: 10%;
+            border: 2px solid darkblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="star.png" alt="star">
+
+    <div class="box-intrinsic"></div>
+
+    <div class="wrapper">
+        <div class="box-extrinsic"></div>
+        <div class="box-extrinsic">These boxes both have a height set, this box has content in it which will need more
+            space
+            than the assigned height, and
+            so we get overflow.</div>
+    </div>
+
+    <div class="parent">
+        <div class="child">I have 50% width of my parent element.</div>
+    </div>
+
+    <div class="margin-wrapper">
+        <div class="box">
+            I have margin and padding set to 10% on all sides.
+        </div>
+    </div>
+
+</body>
+
+</html>

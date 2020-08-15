@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box {
+            border: 5px solid darkblue;
+            min-height: 150px;
+            width: 200px;
+            font-size: 25px;
+        }
+
+        .img-wrapper {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .img-wrapper>div {
+            border: 2px solid red;
+        }
+
+        .img-box {
+            width: 200px;
+        }
+
+        .img-minibox {
+            width: 50px;
+        }
+
+        .width {
+            width: 100%;
+        }
+
+        .max-width {
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="box"></div>
+        <div class="box">These boxes both have a min-height set, this box has content in it which will need more space
+            than
+            the assigned height, and so it grows from the minimum.</div>
+    </div>
+
+    <div class="img-wrapper">
+        <div class="img-box"><img src="star.png" alt="star" class="width"></div>
+        <div class="img-box"><img src="star.png" alt="star" class="max-width"></div>
+        <div class="img-minibox"><img src="star.png" alt="star" class="max-width"></div>
+    </div>
+
+</body>
+
+</html>
