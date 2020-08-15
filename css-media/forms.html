@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        form {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        /* below settings will provide consistent base */
+        input,
+        button,
+        select,
+        textarea {
+            font-family: inherit;
+            font-size: 100%;
+
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* IE shows scrollbar when there's no need */
+        textarea {
+            overflow: auto;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            border: 2px solid burlywood;
+            margin: 0 0 1em 0;
+            padding: 10px;
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            border: 3px solid #333;
+            background-color: #999;
+            border-radius: 5px;
+            padding: 10px 2em;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <form>
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name">
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email">
+        </div>
+        <div>
+            <label for="msg">Message</label>
+            <textarea id="msg"></textarea>
+        </div>
+
+        <div class="buttons">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+</body>
+</html>

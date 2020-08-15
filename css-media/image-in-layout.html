@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .wrapper {
+            display: grid;;
+            border: 2px solid purple;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 200px 200px;
+            gap: 20px;
+        }
+
+        .wrapper > div {
+            background-color: mediumaquamarine;
+            border-radius: .5em;
+        }
+
+        /* to force image to stretch */
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <img src="star.png" alt="star">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+</body>
+</html>
