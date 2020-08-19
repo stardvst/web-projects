@@ -2,7 +2,7 @@
     .card: 10
     .card header: 11
     .card footer: 11
-    img: 1
+    .card article img: 12
 */
 
 /* || General page styles */
@@ -21,7 +21,7 @@ html {
 
 h2 {
     font-size: 2em;
-    line-height: 30px;
+    line-height: 1.5;
 }
 
 /* || Card container rules */
@@ -37,41 +37,40 @@ h2 {
 
 /* || Card header and footer rules */
 
-header {
+.card header {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
     border-radius: 1.5em 1.5em 0 0;
 }
 
-footer {
+.card footer {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
     border-radius: 0 0 1.5em 1.5em;
 }
 
-header,
-footer {
-    height: 5em;
-    box-sizing: border-box;
-    padding: 10px;
+.card header,
+.card footer {
+    height: 3em;
+    padding: 1em;
 }
 
 footer p {
     font-size: 1.5em;
-    line-height: 30px;
+    line-height: 2;
 }
 
 /* || Main business card content styles */
 
 article {
     height: 12em;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.25);
 }
 
 article p {
-    padding: 10px;
-    color: #ccc;
+    padding: 1em;
+    color: rgba(255, 255, 255, 0.8);
 }
 
-img {
+.card article img {
     max-height: 100%;
     float: right;
 }

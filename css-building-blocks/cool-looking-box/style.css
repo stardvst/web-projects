@@ -6,24 +6,23 @@ html {
 
 p {
     width: 200px;
-    height: 50px;
     text-align: center;
-    line-height: 50px;
+    line-height: 3;
 
     /* 1rem=16px, 17-18px=1.1rem */
     font-size: 1.1em;
 
     background-color: red;
     color: red;
-    border: 1px solid rgba(1, 0, 0, 1);
+    border: 1px solid #990000;
 
     text-shadow: 1px 1px 1px black;
 
     border-radius: 10px;
 
-    background-image: linear-gradient(to bottom right, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.2));
+    background-image: linear-gradient(to bottom right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.2));
 
-    box-shadow: 1px 1px 5px black,
-        inset 1px 5px 5px -3px rgba(255, 255, 255, 0.5),
-        inset 1px 1px 3px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+        inset -2px -2px 3px rgba(0, 0, 0, 0.6),
+        1px 1px 5px black;
 }
