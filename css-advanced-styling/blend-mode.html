@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .wrapper>div {
+            width: 250px;
+            height: 130px;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            background: url(https://mdn.mozillademos.org/files/13090/colorful-heart.png) no-repeat center 20px;
+            background-color: green;
+        }
+
+        .multiply {
+            background-blend-mode: multiply;
+        }
+
+        .mix {
+            width: 280px;
+            height: 180px;
+            margin: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .mix div {
+            width: 250px;
+            height: 130px;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .mix div:first-child {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            background: url(https://mdn.mozillademos.org/files/13090/colorful-heart.png) no-repeat center 20px;
+            background-color: green;
+        }
+
+        .mix div:last-child {
+            background-color: purple;
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            z-index: -1;
+        }
+
+        .multiply-mix {
+            mix-blend-mode: multiply;
+        }
+    </style>
+</head>
+
+<body>
+
+    <article class="wrapper">
+        <h3>Background blend mode: multiply</h3>
+        <div></div>
+        <div class="multiply"></div>
+    </article>
+
+    <article class="mix">
+        No mix blend mode
+        <div></div>
+        <div></div>
+    </article>
+
+    <article class="mix">
+        Multiply mix blend mode
+        <div class="multiply-mix"></div>
+        <div></div>
+    </article>
+
+</body>
+
+</html>
