@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Simple grid</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 980px;
+            margin: 0 auto;
+        }
+
+        .wrapper {
+            padding-right: 20px;
+        }
+
+        .row {
+            clear: both;
+        }
+
+        .col {
+            float: left;
+            width: 60px;
+            margin-left: 20px;
+            background: rgb(255, 150, 150);
+        }
+
+        .span2 {
+            width: 140px;
+        }
+
+        .span3 {
+            width: 220px;
+        }
+
+        .span4 {
+            width: 300px;
+        }
+
+        .span5 {
+            width: 380px;
+        }
+
+        .span6 {
+            width: 460px;
+        }
+
+        .span7 {
+            width: 540px;
+        }
+
+        .span8 {
+            width: 620px;
+        }
+
+        .span9 {
+            width: 700px;
+        }
+
+        .span10 {
+            width: 780px;
+        }
+
+        .span11 {
+            width: 860px;
+        }
+
+        .span12 {
+            width: 940px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="row">
+            <div class="col">1</div>
+            <div class="col">2</div>
+            <div class="col">3</div>
+            <div class="col">4</div>
+            <div class="col">5</div>
+            <div class="col">6</div>
+            <div class="col">7</div>
+            <div class="col">8</div>
+            <div class="col">9</div>
+            <div class="col">10</div>
+            <div class="col">11</div>
+            <div class="col">12</div>
+        </div>
+        <div class="row">
+            <div class="col span1">13</div>
+            <div class="col span6">14</div>
+            <div class="col span3">15</div>
+            <div class="col span2">16</div>
+        </div>
+    </div>
+</body>
+
+</html>
