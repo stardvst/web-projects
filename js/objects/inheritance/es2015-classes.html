@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Object-oriented JavaScript inheritance (ES6)</title>
+</head>
+
+<body>
+  <script>
+    class Person {
+      constructor(first, last, age, gender, interests) {
+        this.name = {
+          first,
+          last
+        };
+        this.age = age;
+        this.gender = gender;
+        this.interests = interests;
+      }
+
+      greeting() {
+        alert('Hi! I\'m ' + this.name.first + '.');
+      }
+
+      farewell() {
+        alert(this.name.first + ' has left the building. Bye for now!');
+      }
+    }
+
+    let person1 = new Person('Tammi', 'Smith', 17, 'female', ['music', 'skiing', 'kickboxing']);
+    person1.greeting();
+
+    // inherit
+    class Teacher extends Person {
+      constructor(first, last, age, gender, interests, subject) {
+        super(first, last, age, gender, interests);
+        this._subject = subject;
+      }
+
+      get subject() {
+        return this._subject;
+      }
+
+      set subject(newSubject) {
+        this._subject = newSubject;
+      }
+    }
+
+    let teacher1 = new Teacher('Dave', 'Griffiths', 31, 'male', ['football', 'cookery'], 'mathematics');
+  </script>
+</body>
+</html>
