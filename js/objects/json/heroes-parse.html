@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Our superheroes</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header></header>
+
+  <section></section>
+
+  <script>
+    const header = document.querySelector('header');
+    const section = document.querySelector('section');
+
+    function populateHeader(jsonObj) {
+      const h1 = document.createElement('h1');
+      h1.textContent = jsonObj['squadName'];
+      header.appendChild(h1);
+
+      const p = document.createElement('p');
+      p.textContent = `Hometown: ${jsonObj['homeTown']} // Formed: ${jsonObj['formed']}`;
+      header.appendChild(p);
+    }
+
+    function showHeroes(jsonObj) {
+      const heroes = jsonObj['members'];
+      for(let i = 0; i < heroes.length; i++) {
+        const article = document.createElement('article');
+        const h2 = document.createElement('h2');
+        const p1 = document.createElement('p');
+        const p2 = document.createElement('p');
+        const p3 = document.createElement('p');
+        const list = document.createElement('ul');
+
+        h2.textContent = heroes[i].name;
+        p1.textContent = `Secret identity: ${heroes[i].secretIdentity}`;
+        p2.textContent = `Age: ${heroes[i].age}`;
+        p3.textContent = 'Superpowers: ';
+
+        const powers = heroes[i].powers;
+        for(let j = 0; j < powers.length; j++) {
+          const item = document.createElement('li');
+          item.textContent = powers[j];
+          list.appendChild(item);
+        }
+
+        article.appendChild(h2);
+        article.appendChild(p1);
+        article.appendChild(p2);
+        article.appendChild(p3);
+        article.appendChild(list);
+
+        section.appendChild(article);
+      }
+    }
+
+    // create request, set properties and send it
+    const requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
+    const request = new XMLHttpRequest();
+    request.open('GET', requestURL);
+    request.responseType = 'text';
+    request.send();
+
+    // wait for response and deal with it
+    request.onload = function() {
+      const superHeroesText = request.response; // this is text
+      const superHeroes = JSON.parse(superHeroesText); // this JSON object
+      populateHeader(superHeroes);
+      showHeroes(superHeroes);
+    }
+
+  </script>
+</body>
+</html>
