@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    const promise1 = fetch('coffee.jpg');
+    const promise2 = promise1.then(res => res.blob());
+    const promise3 = promise2.then(blob => {
+      const objectURL = URL.createObjectURL(blob);
+      const image = document.createElement('img');
+      image.src = objectURL;
+      document.body.appendChild(image);
+    });
+    const errorCase = promise3.catch(err => {
+      console.log(`Something went wrong: ${err.message}`);
+    });
+  </script>
+</body>
+</html>

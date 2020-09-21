@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <title>Spinner</title>
+
+  <style>
+    html {
+      background-color: white;
+      height: 100%;
+    }
+
+    body {
+      height: inherit;
+      background-color: rgb(177, 156, 156);
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    div {
+      display: inline-block;
+      font-size: 10rem;
+      /* border: 1px solid; */
+    }
+  </style>
+</head>
+
+<body>
+  <div>↻</div>
+
+  <script>
+    const spinner = document.querySelector('div');
+    let rotateCount = 0;
+    let startTime = null;
+    let rAF;
+    let spinning = false;
+
+    function draw(timestamp) {
+      if(!startTime) {
+        startTime = timestamp;
+      }
+
+      rotateCount = (timestamp - startTime) / 3;
+      if(rotateCount > 359) {
+        rotateCount %= 360;
+      }
+
+      spinner.style.transform = `rotate(${rotateCount}deg)`;
+
+      rAF = requestAnimationFrame(draw);
+    }
+
+    document.body.addEventListener('click', () => {
+      if(spinning) {
+        cancelAnimationFrame(rAF);
+        spinning = false;
+      } else {
+        draw(Date.now());
+        spinning = true;
+      }
+    });
+  </script>
+</body>
+</html>

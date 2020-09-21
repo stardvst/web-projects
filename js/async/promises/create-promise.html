@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    let timeoutPromise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('Success!');
+      }, 2000);
+    });
+
+    timeoutPromise.then(alert);
+
+    function timeOut(msg, ms) {
+      return new Promise((resolve, reject) => {
+        if(msg === '' || typeof msg !== 'string') {
+          reject('Message is empty or not a string');
+        } else if(ms < 0 || typeof ms !== 'number') {
+          reject('Interval is negative or NaN');
+        } else {
+          setTimeout(() => {
+            resolve(msg);
+          }, ms);
+        }
+      });
+    }
+
+    timeOut('', 4000)
+      .then(msg => {
+        alert(msg);
+      })
+      .catch(e => {
+        console.log(`Error: ${e}`);
+      });
+  </script>
+</body>
+</html>

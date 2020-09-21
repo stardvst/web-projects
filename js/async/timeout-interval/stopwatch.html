@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <title>Simple setInterval clock</title>
+  <style>
+    p {
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <button class="start">start</button>
+  <button class="stop">stop</button>
+  <button class="reset">reset</button>
+  <p class="clock"></p>
+  <script>
+    const startButton = document.querySelector('.start');
+    const stopButton = document.querySelector('.stop');
+    const resetButton = document.querySelector('.reset');
+    const clockPara = document.querySelector('.clock');
+
+    let stopWatch;
+    secondCount = 0;
+
+    function displayTime(miliseconds) {
+      secondCount = Math.floor(miliseconds / 1000);
+
+      let hour = Math.floor(secondCount / 3600);
+      if(hour < 10) hour = '0' + hour;
+
+      let min = Math.floor((secondCount % 3600) / 60);
+      if(min < 10) min = '0' + min;
+
+      let sec = secondCount % 60;
+      if(sec < 10) sec = '0' + sec;
+
+      clockPara.textContent = `${hour}:${min}:${sec}`;
+    }
+
+    startButton.addEventListener('click', function() {
+      const startTime = Date.now();
+      startButton.disabled = true;
+      stopWatch = setInterval(function() {
+        displayTime(Date.now() - startTime);
+      }, 1000);
+    });
+
+    stopButton.addEventListener('click', function() {
+      clearInterval(stopWatch);
+      startButton.disabled = false;
+    });
+
+    resetButton.addEventListener('click', function() {
+      clearInterval(stopWatch);
+      startButton.disabled = false;
+      displayTime(0);
+    });
+
+    displayTime(0);
+
+    setTimeout(() => {
+      alert('World');
+    })
+    alert('Hello');
+  </script>
+</body>
+</html>
