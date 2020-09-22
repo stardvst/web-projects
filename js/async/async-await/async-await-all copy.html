@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    async function fetchAndDecode(url, type) {
+      const result = await fetch(url);
+      if(type === 'blob') {
+        return await res.blob();
+      } else if(type === 'text') {
+        return await res.text();
+      }
+    }
+
+    async function displayContent() {
+      const coffee = fetchAndDecode('coffee.jpg', 'blob');
+      const tea = fetchAndDecode('tea.jpg', 'blob');
+      const desc = fetchAndDecode('description.txt', 'text');
+
+      const values = await Promise.all([coffee, tea, desc]);
+      let objectURL1 = URL.createObjectURL(values[0]);
+      let objectURL2 = URL.createObjectURL(values[1]);
+      let descText = values[2];
+
+      let image1 = document.createElement('img');
+      let image2 = document.createElement('img');
+      image1.src = objectURL1;
+      image1.height = 150;
+      image1.width = 200;
+      image2.src = objectURL2;
+      image2.height = 150;
+      image2.width = 200;
+      document.body.appendChild(image1);
+      document.body.appendChild(image2);
+
+      let para = document.createElement('p');
+      para.textContent = descText;
+      document.body.appendChild(para);
+    }
+
+    displayContent().catch(console.log);
+  </script>
+</body>
+</html>

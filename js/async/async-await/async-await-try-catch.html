@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    async function myFetch() {
+      try {
+        const res = await fetch('coffee.jpg');
+        const blob = await res.blob();
+
+        const objectURL = URL.createObjectURL(blob);
+        const image = document.createElement('img');
+        image.src = objectURL;
+        document.body.appendChild(image)
+      } catch(e) {
+        console.log(e.message);
+      }
+    }
+
+    myFetch();
+  </script>
+</body>
+</html>
