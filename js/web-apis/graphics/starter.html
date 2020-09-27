@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas class="canvas">
+    <p>Fallback: Canvas is not supported.</p>
+  </canvas>
+
+  <script>
+    function degToRad(degrees) {
+      return degrees * Math.PI / 180;
+    };
+
+    const canvas = document.querySelector('.canvas');
+    const width = canvas.width = window.innerWidth;
+    const height = canvas.height = window.innerHeight;
+
+    const ctx = canvas.getContext('2d');
+
+    ctx.fillStyle = 'rgb(145, 145, 145)';
+    ctx.fillRect(50, 50, 100, 150);
+
+    ctx.fillStyle = 'rgb(145, 0, 145)';
+    ctx.fillRect(72, 72, 100, 150);
+
+    ctx.strokeStyle = 'rgb(0, 255, 0)';
+    ctx.lineWidth = 4;
+    ctx.strokeRect(25, 25, 175, 200);
+
+    // triangle
+    ctx.fillStyle = 'rgb(255, 0, 0)';
+    ctx.beginPath();
+    ctx.moveTo(350, 350);
+    ctx.lineTo(450, 350);
+    let triHeight = 50 * Math.tan(degToRad(60));
+    ctx.lineTo(400, 350 + triHeight);
+    ctx.lineTo(350, 350);
+    ctx.fill();
+
+    // circles
+    ctx.fillStyle = 'rgb(0, 0, 255)';
+    ctx.beginPath();
+    ctx.arc(150, 106, 50, degToRad(0), degToRad(360), false);
+    ctx.fill();
+
+    ctx.fillStyle = 'red';
+    ctx.beginPath();
+    ctx.arc(200, 106, 50, degToRad(-45), degToRad(45), true);
+    ctx.lineTo(200, 106);
+    ctx.fill();
+
+    // text
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 1;
+    ctx.font = '36px arial';
+    ctx.strokeText('Canvas text', 50, 50);
+
+    ctx.fillStyle = 'red';
+    ctx.font = '48px georgia';
+    ctx.fillText('Canvas text', 50, 150);
+
+    // image
+    const img = new Image();
+    img.src = 'firefox.png';
+    img.onload = () => {
+      ctx.drawImage(img, 400, 10);
+    };
+  </script>
+</body>
+</html>
