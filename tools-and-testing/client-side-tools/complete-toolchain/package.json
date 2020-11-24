@@ -1,0 +1,29 @@
+{
+  "name": "complete-toolchain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/*.js",
+    "build": "npm run test && npx parcel build src/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^0.21.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.14.0",
+    "eslint-plugin-react": "^7.21.5",
+    "parcel-bundler": "^1.12.4",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.2.0"
+  },
+  "dependencies": {
+    "date-fns": "^2.16.1",
+    "format-number": "^3.0.0",
+    "react": "^17.0.1",
+    "react-async-hook": "^3.6.2",
+    "react-dom": "^17.0.1"
+  }
+}
