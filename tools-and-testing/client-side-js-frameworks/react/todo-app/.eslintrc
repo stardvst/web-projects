@@ -19,6 +19,7 @@
     "react/react-in-jsx-scope": 0,
     "no-console": 1,
     "import/no-default-export": "off",
+    "react/require-default-props": "off",
     "react/jsx-uses-vars": "error"
   },
   "settings": {
