@@ -2,7 +2,7 @@ import { React } from 'react';
 import PropTypes from 'prop-types';
 
 export default function Todo({
-  name, id, toggleCompleted, completed = false,
+  name, id, toggleCompleted, deleteTodo, completed = false,
 }) {
   return (
     <li className="todo stack-small">
@@ -23,7 +23,11 @@ export default function Todo({
           {' '}
           <span className="visually-hidden">Eat</span>
         </button>
-        <button type="button" className="btn btn__danger">
+        <button
+          type="button"
+          className="btn btn__danger"
+          onClick={() => deleteTodo(id)}
+        >
           Delete
           {' '}
           <span className="visually-hidden">Eat</span>
@@ -37,5 +41,6 @@ Todo.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   toggleCompleted: PropTypes.func,
+  deleteTodo: PropTypes.func,
   completed: PropTypes.bool,
 };
