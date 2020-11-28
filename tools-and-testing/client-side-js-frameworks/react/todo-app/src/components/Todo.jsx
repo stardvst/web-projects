@@ -1,11 +1,18 @@
 import { React } from 'react';
 import PropTypes from 'prop-types';
 
-export default function Todo({ name, id, completed = false }) {
+export default function Todo({
+  name, id, toggleCompleted, completed = false,
+}) {
   return (
     <li className="todo stack-small">
       <div className="c-cb">
-        <input id={id} type="checkbox" defaultChecked={completed} />
+        <input
+          id={id}
+          type="checkbox"
+          defaultChecked={completed}
+          onChange={() => toggleCompleted(id)}
+        />
         <label className="todo-label" htmlFor={id}>
           {name}
         </label>
@@ -29,5 +36,6 @@ export default function Todo({ name, id, completed = false }) {
 Todo.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  toggleCompleted: PropTypes.func,
   completed: PropTypes.bool,
 };

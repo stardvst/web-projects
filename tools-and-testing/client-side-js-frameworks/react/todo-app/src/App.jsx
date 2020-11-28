@@ -8,12 +8,19 @@ import FilterButton from './components/FilterButton';
 function App({ tasks }) {
   const [currentTasks, setTasks] = useState(tasks);
 
+  const toggleTaskCompleted = (id) => {
+    const toggledTask = currentTasks.filter((task) => task.id === id);
+    toggledTask.completed = !toggledTask.completed;
+    setTasks(currentTasks);
+  };
+
   const taskList = currentTasks.map((task) => (
     <Todo
       id={task.id}
       name={task.name}
       completed={task.completed}
       key={task.id}
+      toggleCompleted={toggleTaskCompleted}
     />
   ));
 
