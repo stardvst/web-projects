@@ -9,13 +9,21 @@ function App({ tasks }) {
   const [currentTasks, setTasks] = useState(tasks);
 
   const toggleTaskCompleted = (id) => {
-    const toggledTask = currentTasks.filter((task) => task.id === id);
+    const updatedTasks = [...currentTasks];
+    const toggledTask = updatedTasks.find((task) => task.id === id);
     toggledTask.completed = !toggledTask.completed;
-    setTasks(currentTasks);
+    setTasks(updatedTasks);
   };
 
   const deleteTodo = (id) => {
     setTasks(currentTasks.filter((task) => task.id !== id));
+  };
+
+  const editTodo = (id, newName) => {
+    const updatedTasks = [...currentTasks];
+    const changedTask = updatedTasks.find((task) => task.id === id);
+    changedTask.name = newName;
+    setTasks(updatedTasks);
   };
 
   const taskList = currentTasks.map((task) => (
@@ -26,6 +34,7 @@ function App({ tasks }) {
       key={task.id}
       toggleCompleted={toggleTaskCompleted}
       deleteTodo={deleteTodo}
+      editTodo={editTodo}
     />
   ));
 
@@ -40,7 +49,7 @@ function App({ tasks }) {
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
-      <Form addTask={addTask} deleteTodo={deleteTodo} />
+      <Form addTask={addTask} />
       <div className="filters btn-group stack-exception">
         <FilterButton text="all" ariaPressed />
         <FilterButton text="Active" />
