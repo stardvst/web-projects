@@ -5,8 +5,16 @@ import Todo from './components/Todo';
 import Form from './components/Form';
 import FilterButton from './components/FilterButton';
 
+const FILTER_MAP = {
+  All: () => true,
+  Active: (task) => !task.completed,
+  Completed: (task) => task.completed,
+};
+const FILTER_NAMES = Object.keys(FILTER_MAP);
+
 function App({ tasks }) {
   const [currentTasks, setTasks] = useState(tasks);
+  const [filter, setFilter] = useState('All');
 
   const toggleTaskCompleted = (id) => {
     const updatedTasks = [...currentTasks];
@@ -26,15 +34,30 @@ function App({ tasks }) {
     setTasks(updatedTasks);
   };
 
-  const taskList = currentTasks.map((task) => (
-    <Todo
-      id={task.id}
-      name={task.name}
-      completed={task.completed}
-      key={task.id}
-      toggleCompleted={toggleTaskCompleted}
-      deleteTodo={deleteTodo}
-      editTodo={editTodo}
+  const updateFilter = (filterName) => {
+    setFilter(filterName);
+  };
+
+  const taskList = currentTasks
+    .filter(FILTER_MAP[filter])
+    .map((task) => (
+      <Todo
+        id={task.id}
+        name={task.name}
+        completed={task.completed}
+        key={task.id}
+        toggleCompleted={toggleTaskCompleted}
+        deleteTodo={deleteTodo}
+        editTodo={editTodo}
+      />
+    ));
+
+  const filterList = FILTER_NAMES.map((name) => (
+    <FilterButton
+      key={name}
+      text={name}
+      setFilter={updateFilter}
+      isPressed={name === filter}
     />
   ));
 
@@ -51,9 +74,7 @@ function App({ tasks }) {
       <h1>TodoMatic</h1>
       <Form addTask={addTask} />
       <div className="filters btn-group stack-exception">
-        <FilterButton text="all" ariaPressed />
-        <FilterButton text="Active" />
-        <FilterButton text="Completed" />
+        {filterList}
       </div>
       <h2 id="list-heading">{headingText}</h2>
       {/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
