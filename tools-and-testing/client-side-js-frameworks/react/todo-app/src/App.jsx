@@ -1,10 +1,14 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+import { nanoid } from 'nanoid';
 import Todo from './components/Todo';
 import Form from './components/Form';
 import FilterButton from './components/FilterButton';
 
 function App({ tasks }) {
-  const taskList = tasks.map((task) => (
+  const [currentTasks, setTasks] = useState(tasks);
+
+  const taskList = currentTasks.map((task) => (
     <Todo
       id={task.id}
       name={task.name}
@@ -12,16 +16,25 @@ function App({ tasks }) {
       key={task.id}
     />
   ));
+
+  const addTask = (name) => {
+    const newTask = { id: `todo-${nanoid()}`, name, completed: false };
+    setTasks((storedTasks) => [...storedTasks, newTask]);
+  };
+
+  const tasksNoun = taskList.length === 1 ? 'task' : 'tasks';
+  const headingText = `${taskList.length} ${tasksNoun} remaining`;
+
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
-      <Form />
+      <Form addTask={addTask} />
       <div className="filters btn-group stack-exception">
         <FilterButton text="all" ariaPressed />
         <FilterButton text="Active" />
         <FilterButton text="Completed" />
       </div>
-      <h2 id="list-heading">3 tasks remaining</h2>
+      <h2 id="list-heading">{headingText}</h2>
       {/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
       <ul
         role="list"

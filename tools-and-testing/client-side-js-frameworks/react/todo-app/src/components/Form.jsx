@@ -1,8 +1,23 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import PropTypes from 'prop-types';
+import { useState } from 'react';
 
-export default function Form() {
+export default function Form({ addTask }) {
+  const [name, setName] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (name === '') return;
+    addTask(name);
+    setName('');
+  };
+
+  const handleChange = (e) => {
+    setName(e.target.value);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h2 className="label-wrapper">
         <label htmlFor="new-todo-input" className="label__lg">
           What needs to be done?
@@ -14,6 +29,8 @@ export default function Form() {
         className="input input__lg"
         name="text"
         autoComplete="off"
+        value={name}
+        onChange={handleChange}
       />
       <button type="submit" className="btn btn__primary btn__lg">
         Add
@@ -21,3 +38,7 @@ export default function Form() {
     </form>
   );
 }
+
+Form.propTypes = {
+  addTask: PropTypes.func,
+};
