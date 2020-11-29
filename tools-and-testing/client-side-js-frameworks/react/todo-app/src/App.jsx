@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { nanoid } from 'nanoid';
+import usePrevious from './usePrevious';
 import Todo from './components/Todo';
 import Form from './components/Form';
 import FilterButton from './components/FilterButton';
@@ -15,6 +16,8 @@ const FILTER_NAMES = Object.keys(FILTER_MAP);
 function App({ tasks }) {
   const [currentTasks, setTasks] = useState(tasks);
   const [filter, setFilter] = useState('All');
+  const headingRef = useRef(null);
+  const taskLength = usePrevious(currentTasks.length);
 
   const toggleTaskCompleted = (id) => {
     const updatedTasks = [...currentTasks];
@@ -69,6 +72,12 @@ function App({ tasks }) {
   const tasksNoun = taskList.length === 1 ? 'task' : 'tasks';
   const headingText = `${taskList.length} ${tasksNoun} remaining`;
 
+  useEffect(() => {
+    if (currentTasks.length - taskLength === -1) {
+      headingRef.current.focus();
+    }
+  }, [currentTasks.length, taskLength]);
+
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
@@ -76,7 +85,7 @@ function App({ tasks }) {
       <div className="filters btn-group stack-exception">
         {filterList}
       </div>
-      <h2 id="list-heading">{headingText}</h2>
+      <h2 id="list-heading" tabIndex="-1" ref={headingRef}>{headingText}</h2>
       {/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
       <ul
         role="list"
