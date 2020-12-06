@@ -1,11 +1,47 @@
 const Genre = require("../models/genre");
+const Book = require("../models/book");
+const async = require("async");
 
-exports.genre_list = (req, res) => {
-  res.send("NOT IMPLEMENTED: Genre list");
+exports.genre_list = (req, res, next) => {
+  Genre.find()
+    .sort([["name", "ascending"]])
+    .exec((err, list_genres) => {
+      if (err) {
+        return next(err);
+      }
+      res.render("genre_list", {
+        title: "Genre List",
+        genre_list: list_genres,
+      });
+    });
 };
 
-exports.genre_detail = (req, res) => {
-  res.send("NOT IMPLEMENTED: Genre detail: " + req.params.id);
+exports.genre_detail = (req, res, next) => {
+  async.parallel(
+    {
+      genre: (callback) => {
+        Genre.findById(req.params.id).exec(callback);
+      },
+      genre_books: (callback) => {
+        Book.find({ genre: req.params.id }).exec(callback);
+      },
+    },
+    (err, results) => {
+      if (err) {
+        return next(err);
+      }
+      if (results.genre === null) {
+        const err = new Error("Genre not found.");
+        err.status = 404;
+        return next(err);
+      }
+      res.render("genre_detail", {
+        title: "Genre Detail",
+        genre: results.genre,
+        genre_books: results.genre_books,
+      });
+    }
+  );
 };
 
 exports.genre_create_get = (req, res) => {
