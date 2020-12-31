@@ -5,8 +5,8 @@ import Todo from './Todo';
 export default function TaskList({
   tasks,
   toggleCompleted,
-  editTodo,
-  deleteTodo,
+  editTask,
+  deleteTask,
 }) {
   const headingRef = useRef(null);
 
@@ -17,9 +17,9 @@ export default function TaskList({
       completed={task.completed}
       key={task.id}
       toggleCompleted={toggleCompleted}
-      editTodo={editTodo}
-      deleteTodo={(...args) => {
-        deleteTodo(...args);
+      editTask={editTask}
+      deleteTask={(...args) => {
+        deleteTask(...args);
         headingRef.current.focus();
       }}
     />
@@ -29,7 +29,7 @@ export default function TaskList({
   const headingText = `${taskList.length} ${tasksNoun} remaining`;
 
   return (
-    <div>
+    <>
       <h2 id="list-heading" tabIndex="-1" ref={headingRef}>
         {headingText}
       </h2>
@@ -41,7 +41,7 @@ export default function TaskList({
       >
         {taskList}
       </ul>
-    </div>
+    </>
   );
 }
 
@@ -54,6 +54,6 @@ TaskList.propTypes = {
     }),
   ).isRequired,
   toggleCompleted: PropTypes.func.isRequired,
-  editTodo: PropTypes.func.isRequired,
-  deleteTodo: PropTypes.func.isRequired,
+  editTask: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
 };

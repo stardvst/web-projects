@@ -2,19 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import usePrevious from '../usePrevious';
 
-export default function Todo({
-  name,
-  id,
-  toggleCompleted,
-  deleteTodo,
-  editTodo,
-  completed = false,
+function EditTemplate({
+  name, id, editTask, setEditing, editFieldRef,
 }) {
-  const [isEditing, setEditing] = useState(false);
   const [newName, setNewName] = useState('');
-  const editFieldRef = useRef(null);
-  const editButtonRef = useRef(null);
-  const wasEditing = usePrevious(isEditing);
 
   const handleChange = (e) => {
     setNewName(e.target.value);
@@ -25,12 +16,12 @@ export default function Todo({
     if (!newName.trim()) {
       return;
     }
-    editTodo(id, newName);
+    editTask(id, newName);
     setNewName('');
     setEditing(false);
   };
 
-  const editTemplate = (
+  return (
     <form className="stack-small" onSubmit={handleSubmit}>
       <div className="form-group">
         <label className="todo-label" htmlFor={id}>
@@ -71,8 +62,18 @@ export default function Todo({
       </div>
     </form>
   );
+}
 
-  const viewTemplate = (
+function ViewTemplate({
+  name,
+  id,
+  toggleCompleted,
+  deleteTask,
+  completed,
+  setEditing,
+  editButtonRef,
+}) {
+  return (
     <li className="todo stack-small">
       <div className="c-cb">
         <input
@@ -99,7 +100,7 @@ export default function Todo({
         <button
           type="button"
           className="btn btn__danger"
-          onClick={() => deleteTodo(id)}
+          onClick={() => deleteTask(id)}
         >
           Delete
           {' '}
@@ -108,6 +109,20 @@ export default function Todo({
       </div>
     </li>
   );
+}
+
+export default function Todo({
+  name,
+  id,
+  toggleCompleted,
+  deleteTask,
+  editTask,
+  completed = false,
+}) {
+  const [isEditing, setEditing] = useState(false);
+  const editFieldRef = useRef(null);
+  const editButtonRef = useRef(null);
+  const wasEditing = usePrevious(isEditing);
 
   useEffect(() => {
     if (!wasEditing && isEditing) {
@@ -117,14 +132,60 @@ export default function Todo({
     }
   }, [wasEditing, isEditing]);
 
-  return <div className="todo">{isEditing ? editTemplate : viewTemplate}</div>;
+  return (
+    <div className="todo">
+      {isEditing ? (
+        <EditTemplate
+          name={name}
+          id={id}
+          editTask={editTask}
+          setEditing={setEditing}
+          editFieldRef={editFieldRef}
+        />
+      ) : (
+        <ViewTemplate
+          name={name}
+          id={id}
+          toggleCompleted={toggleCompleted}
+          deleteTask={deleteTask}
+          completed={completed}
+          setEditing={setEditing}
+          editButtonRef={editButtonRef}
+        />
+      )}
+    </div>
+  );
 }
+
+EditTemplate.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  editTask: PropTypes.func,
+  setEditing: PropTypes.func,
+  editFieldRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ]),
+};
+
+ViewTemplate.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  toggleCompleted: PropTypes.func,
+  deleteTask: PropTypes.func,
+  completed: PropTypes.bool,
+  setEditing: PropTypes.func,
+  editButtonRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ]),
+};
 
 Todo.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   toggleCompleted: PropTypes.func,
-  deleteTodo: PropTypes.func,
-  editTodo: PropTypes.func,
+  deleteTask: PropTypes.func,
+  editTask: PropTypes.func,
   completed: PropTypes.bool,
 };

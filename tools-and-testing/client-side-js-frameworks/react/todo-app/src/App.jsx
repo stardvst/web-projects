@@ -3,26 +3,29 @@ import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
 import Form from './components/Form';
 import TaskTable from './components/TaskTable';
+import TaskListContext from './context/TaskList.context';
 
-function App({ tasks }) {
-  const [currentTasks, setTasks] = useState(tasks);
+export default function App({ initialTasks }) {
+  const [currentTasks, setTasks] = useState(initialTasks);
 
   const toggleTaskCompleted = (id) => {
-    const updatedTasks = [...currentTasks];
-    const toggledTask = updatedTasks.find((task) => task.id === id);
-    toggledTask.completed = !toggledTask.completed;
-    setTasks(updatedTasks);
+    setTasks((prevTasks) => {
+      const toggledTask = prevTasks.find((task) => task.id === id);
+      toggledTask.completed = !toggledTask.completed;
+      return [...prevTasks];
+    });
   };
 
-  const deleteTodo = (id) => {
+  const deleteTask = (id) => {
     setTasks(currentTasks.filter((task) => task.id !== id));
   };
 
-  const editTodo = (id, newName) => {
-    const updatedTasks = [...currentTasks];
-    const changedTask = updatedTasks.find((task) => task.id === id);
-    changedTask.name = newName;
-    setTasks(updatedTasks);
+  const editTask = (id, newName) => {
+    setTasks((prevTasks) => {
+      const toggledTask = prevTasks.find((task) => task.id === id);
+      toggledTask.name = newName;
+      return [...prevTasks];
+    });
   };
 
   const addTask = (name) => {
@@ -34,18 +37,19 @@ function App({ tasks }) {
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
       <Form addTask={addTask} />
-      <TaskTable
-        tasks={currentTasks}
-        toggleCompleted={toggleTaskCompleted}
-        editTodo={editTodo}
-        deleteTodo={deleteTodo}
-      />
+      <TaskListContext.Provider value={currentTasks}>
+        <TaskTable
+          toggleCompleted={toggleTaskCompleted}
+          editTask={editTask}
+          deleteTask={deleteTask}
+        />
+      </TaskListContext.Provider>
     </div>
   );
 }
 
 App.propTypes = {
-  tasks: PropTypes.arrayOf(
+  initialTasks: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
@@ -53,5 +57,3 @@ App.propTypes = {
     }),
   ).isRequired,
 };
-
-export default App;

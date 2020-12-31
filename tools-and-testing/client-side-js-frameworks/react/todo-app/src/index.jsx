@@ -12,7 +12,7 @@ const DATA = [
 
 ReactDOM.render(
   <React.StrictMode>
-    <App tasks={DATA} />
+    <App initialTasks={DATA} />
   </React.StrictMode>,
   document.querySelector('#root'),
 );

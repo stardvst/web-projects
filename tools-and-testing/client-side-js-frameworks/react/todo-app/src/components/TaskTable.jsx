@@ -1,54 +1,28 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import TaskList from './TaskList';
 import FilterBar, { FILTER_MAP } from './FilterBar';
+import taskListContext from '../context/TaskList.context';
 
-class TaskTable extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      filter: 'All',
-    };
-  }
+export default function TaskTable({ toggleCompleted, editTask, deleteTask }) {
+  const [filter, setFilter] = useState('All');
+  const TaskListContext = useContext(taskListContext);
 
-  updateFilter = (newFilter) => {
-    this.setState({ filter: newFilter });
-  };
-
-  render() {
-    const { filter } = this.state;
-    const {
-      tasks, toggleCompleted, editTodo, deleteTodo,
-    } = this.props;
-
-    const filteredTasks = tasks.filter(FILTER_MAP[filter]);
-
-    return (
-      <div>
-        <FilterBar filter={filter} updateFilter={this.updateFilter} />
-        <TaskList
-          tasks={filteredTasks}
-          filter={filter}
-          toggleCompleted={toggleCompleted}
-          editTodo={editTodo}
-          deleteTodo={deleteTodo}
-        />
-      </div>
-    );
-  }
+  return (
+    <>
+      <FilterBar filter={filter} updateFilter={setFilter} />
+      <TaskList
+        tasks={TaskListContext.filter(FILTER_MAP[filter])}
+        toggleCompleted={toggleCompleted}
+        editTask={editTask}
+        deleteTask={deleteTask}
+      />
+    </>
+  );
 }
 
 TaskTable.propTypes = {
-  tasks: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      completed: PropTypes.bool,
-    }),
-  ).isRequired,
   toggleCompleted: PropTypes.func.isRequired,
-  editTodo: PropTypes.func.isRequired,
-  deleteTodo: PropTypes.func.isRequired,
+  editTask: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
 };
-
-export default TaskTable;
